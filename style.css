@@ -30,7 +30,7 @@ a, button, input[type="checkbox"], .pixelated-title {
     height: 120px; /* Added fixed height */
 }
 
-.top-left-image, .top-right-image {
+.top-left-image, .top-right-image, .top-center-image {
     position: absolute;
     top: 0;
     max-width: 150px;
@@ -50,6 +50,11 @@ a, button, input[type="checkbox"], .pixelated-title {
 
 .top-right-image {
     right: 0;
+}
+
+.top-center-image {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Remove the ::after pseudo-elements since we now have text in the SVGs */
@@ -288,7 +293,7 @@ input[type="checkbox"]:checked::after {
         padding-bottom: 20px;
     }
     
-    .top-left-image, .top-right-image {
+    .top-left-image, .top-right-image, .top-center-image {
         max-width: 100px;
     }
 }
