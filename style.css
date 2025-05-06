@@ -27,7 +27,10 @@ a, button, input[type="checkbox"], .pixelated-title {
 .header-images {
     position: relative;
     width: 100%;
-    height: 120px; /* Added fixed height */
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-left-image, .top-right-image, .top-center-image {
@@ -36,7 +39,7 @@ a, button, input[type="checkbox"], .pixelated-title {
     max-width: 150px;
     height: auto;
     z-index: 1;
-    background-color: transparent; /* Remove background since SVG has its own */
+    background-color: transparent;
     width: 150px;
     height: 150px;
     display: flex;
@@ -260,6 +263,7 @@ input[type="checkbox"]:checked::after {
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     font-smooth: never;
+    line-height: 1.4;
 }
 
 /* Cursor animation effect */
@@ -284,6 +288,10 @@ input[type="checkbox"]:checked::after {
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
     .bio-container {
         flex-direction: column;
     }
@@ -295,6 +303,197 @@ input[type="checkbox"]:checked::after {
     
     .top-left-image, .top-right-image, .top-center-image {
         max-width: 100px;
+    }
+    
+    .pixelated-title {
+        font-size: 1.8em;
+    }
+    
+    .instagram-tag {
+        margin: 15px 0;
+    }
+    
+    /* Better table display on mobile */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr {
+        margin-bottom: 20px;
+        border: 1px solid #ff69b4;
+        padding-bottom: 10px;
+    }
+    
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        min-height: 30px;
+    }
+    
+    td:before {
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #ff69b4;
+    }
+    
+    /* Labels for each td based on their position */
+    td:nth-of-type(1):before { content: "Watched?"; }
+    td:nth-of-type(2):before { content: "Anime Name:"; }
+    td:nth-of-type(3):before { content: "Description:"; }
+    
+    /* Adjust checkbox positioning */
+    input[type="checkbox"] {
+        margin: 0;
+        position: absolute;
+        left: 30%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    /* Reduce spacing */
+    .list-section {
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+    
+    .pixel-art-hr {
+        margin: 15px 0;
+    }
+    
+    /* Center the content better */
+    .header-images {
+        margin: 0 auto;
+        height: 100px;
+    }
+    
+    .top-center-image {
+        position: relative;
+        transform: none;
+        left: auto;
+    }
+    
+    /* Improve description readability */
+    td:nth-of-type(3) {
+        padding: 15px 10px;
+        margin-top: 5px;
+        border-top: 1px dotted #555;
+        clear: both;
+        float: none;
+        width: 100%;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    
+    /* Reset the before content for description */
+    td:nth-of-type(3):before {
+        display: block;
+        position: static;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+    .header-images {
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    
+    .top-center-image {
+        max-width: 80px;
+        height: 80px;
+    }
+    
+    .pixelated-title {
+        font-size: 1.5em;
+        margin: 10px 0;
+    }
+    
+    h2.pixelated-title {
+        font-size: 1.3em !important;
+    }
+    
+    .list-section {
+        padding: 10px;
+    }
+    
+    .list-section ul li {
+        padding: 8px 0;
+    }
+    
+    .bio-image {
+        min-width: 100%;
+    }
+    
+    .berserk-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Disable cursor animations on small screens */
+    .cursor-trail {
+        display: none;
+    }
+    
+    /* Use a slightly larger font size for better readability */
+    body {
+        font-size: 14px;
+    }
+    
+    /* Increase line height for pixel font for better readability on mobile */
+    .pixelated-text-container * {
+        line-height: 1.6;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Adjust table text for mobile */
+    td {
+        padding: 12px 8px 12px 50%;
+        font-size: 12px;
+    }
+    
+    /* Adjust description field specifically to be more readable */
+    td:nth-of-type(3) {
+        padding: 15px 10px;
+        line-height: 1.8;
+        font-size: 13px;
+        border-top: 1px dotted #555;
+        border-bottom: 1px dotted #555;
+        margin: 8px 0;
+        background-color: #2a2a2a;
+    }
+    
+    /* Keep the anime list text readable */
+    #rapidFireList li, #mangaList li {
+        font-size: 11px;
+        line-height: 1.6;
+        padding: 10px 0;
+    }
+    
+    /* Make the headline more legible */
+    h1.pixelated-title {
+        font-size: 22px;
+        margin: 15px 0 10px;
+        line-height: 1.4;
+    }
+    
+    /* Ensure the emoji art is visible but not overwhelming */
+    .emoji-art {
+        font-size: 0.6em;
+        line-height: 1.2;
     }
 }
 
@@ -327,4 +526,18 @@ input[type="checkbox"]:checked::after {
     /* To make it appear crisp after scaling, image-rendering might be used on elements inside */
 }
 
-/* Using a pixel font is often the most reliable way for text */ 
+/* Using a pixel font is often the most reliable way for text */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+}
+
+/* Style for the emoji art in the Anime Rapid section */
+.emoji-art {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 

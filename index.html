@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Anime Bucket List 🍿</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Font for pixelated look (Press Start 2P) -->
@@ -31,24 +31,29 @@
 
     <section id="main-anime-list">
         <h2 class="pixelated-title" style="font-size: 1.8em;">Main Watchlist</h2>
-        <table id="animeTable">
-            <thead>
-                <tr>
-                    <th>Watched?</th>
-                    <th>Anime Name (English & Japanese)</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Anime rows will be injected here by JavaScript -->
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table id="animeTable">
+                <thead>
+                    <tr>
+                        <th>Watched?</th>
+                        <th>Anime Name (English & Japanese)</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Anime rows will be injected here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <hr class="pixel-art-hr">
 
     <section class="list-section" id="rapid-fire-section">
-        <h2 class="pixelated-title" style="font-size: 1.5em;">ANIME RAPID 🔥  ̿̿ ̿̿ ̿̿ ̿'̿'\̵͇̿̿\з= ( · ͜͞ʖ·) =ε/̵͇̿̿/'̿'̿ ̿ ̿̿ ̿̿ ̿̿</h2>
+        <h2 class="pixelated-title" style="font-size: 1.5em;">ANIME RAPID 🔥</h2>
+        <div class="emoji-art" style="text-align: center; font-size: 0.8em; margin-bottom: 15px;">
+            =[ ◕‿◕ ]= 🔫 QUICK PICKS 🔫 =[ ◕‿◕ ]=
+        </div>
         <ul id="rapidFireList">
             <!-- Rapid fire list will be injected here -->
         </ul>
