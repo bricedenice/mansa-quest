@@ -1,0 +1,18 @@
+{
+  "name": "anime-bucket-list",
+  "version": "1.0.0",
+  "description": "A pixelated website to track your anime journey",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve",
+    "dev": "npx serve"
+  },
+  "keywords": [
+    "anime",
+    "tracker",
+    "pixel-art",
+    "list"
+  ],
+  "author": "@mansabrice",
+  "license": "MIT"
+} 
