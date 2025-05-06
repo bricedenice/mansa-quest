@@ -299,6 +299,41 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Could not find manga list UL.");
     }
 
+    // Dice randomizer functionality
+    const diceBtn = document.getElementById('roll-dice-btn');
+    const diceFace = document.getElementById('dice-face');
+    const diceResult = document.getElementById('dice-result');
+
+    if (diceBtn && diceFace && diceResult) {
+        diceBtn.addEventListener('click', () => {
+            // Disable button during animation
+            diceBtn.disabled = true;
+            
+            // Add the rolling animation
+            diceFace.classList.add('rolling');
+            
+            // Update the dice result after animation
+            setTimeout(() => {
+                // Generate random number between 1 and 15
+                const randomNum = Math.floor(Math.random() * 15) + 1;
+                
+                // Remove the rolling animation
+                diceFace.classList.remove('rolling');
+                
+                // Update the dice face
+                diceFace.textContent = randomNum;
+                
+                // Update result text
+                diceResult.textContent = `You rolled a ${randomNum}! Choose message #${randomNum} from your recent conversations.`;
+                
+                // Enable button again
+                diceBtn.disabled = false;
+            }, 1000); // Match this timing with the CSS animation duration
+        });
+    } else {
+        console.error("Could not find dice randomizer elements.");
+    }
+
     // Attempt to add a pixel font - requires the font to be available
     // For example, linking Google Fonts in HTML: <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     // Then applying it via CSS as in style.css or directly:

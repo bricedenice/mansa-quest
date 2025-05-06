@@ -313,6 +313,30 @@ input[type="checkbox"]:checked::after {
         margin: 15px 0;
     }
     
+    /* Dice randomizer responsive styles */
+    .dice-container {
+        margin: 15px 0;
+    }
+    
+    .dice-box {
+        width: 80px;
+        height: 80px;
+    }
+    
+    #dice-face {
+        font-size: 2.5em;
+    }
+    
+    .pixel-btn {
+        padding: 8px 16px;
+        font-size: 0.8em;
+    }
+    
+    .dice-result {
+        min-width: 200px;
+        font-size: 0.9em;
+    }
+    
     /* Better table display on mobile */
     table, thead, tbody, th, td, tr {
         display: block;
@@ -460,6 +484,32 @@ input[type="checkbox"]:checked::after {
         height: 150px;
     }
     
+    /* Dice randomizer responsive styles for smaller screens */
+    .dice-container {
+        margin: 10px 0;
+    }
+    
+    .dice-box {
+        width: 60px;
+        height: 60px;
+    }
+    
+    #dice-face {
+        font-size: 2em;
+        border-width: 3px;
+    }
+    
+    .pixel-btn {
+        padding: 6px 12px;
+        font-size: 0.7em;
+    }
+    
+    .dice-result {
+        min-width: 150px;
+        font-size: 0.8em;
+        padding: 8px;
+    }
+    
     /* Disable cursor animations on small screens */
     .cursor-trail {
         display: none;
@@ -563,4 +613,131 @@ input[type="checkbox"]:checked::after {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-family: sans-serif; /* Keep emojis looking normal */
+}
+
+/* Dice randomizer styles */
+.dice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.dice-box {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-bottom: 20px;
+    perspective: 300px;
+}
+
+#dice-face {
+    width: 100%;
+    height: 100%;
+    background-color: #ff69b4;
+    border: 4px solid #fff;
+    box-shadow: 0 0 10px #000, inset 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 0 #000;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-out;
+}
+
+.rolling {
+    animation: diceRoll 1s ease-out;
+}
+
+@keyframes diceRoll {
+    0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+    20% { transform: rotateX(180deg) rotateY(90deg) rotateZ(0); }
+    40% { transform: rotateX(120deg) rotateY(180deg) rotateZ(45deg); }
+    60% { transform: rotateX(320deg) rotateY(230deg) rotateZ(90deg); }
+    80% { transform: rotateX(420deg) rotateY(450deg) rotateZ(45deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(0); }
+}
+
+.pixel-btn {
+    background-color: #222;
+    color: #ff69b4;
+    border: 2px solid #ff69b4;
+    padding: 10px 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #ff69b477;
+    transition: all 0.2s;
+    margin: 10px 0;
+}
+
+.pixel-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #ff69b477;
+}
+
+.pixel-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 #ff69b477;
+}
+
+.dice-result {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #333;
+    border: 2px solid #ff69b4;
+    box-shadow: 3px 3px 0 #ff69b477;
+    text-align: center;
+    min-width: 250px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .dice-container {
+        margin: 15px 0;
+    }
+    
+    .dice-box {
+        width: 80px;
+        height: 80px;
+    }
+    
+    #dice-face {
+        font-size: 2.5em;
+    }
+    
+    .pixel-btn {
+        padding: 8px 16px;
+    }
+    
+    .dice-result {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dice-container {
+        margin: 10px 0;
+    }
+    
+    .dice-box {
+        width: 60px;
+        height: 60px;
+    }
+    
+    #dice-face {
+        font-size: 2em;
+    }
+    
+    .pixel-btn {
+        padding: 6px 12px;
+    }
+    
+    .dice-result {
+        min-width: 150px;
+    }
 } 
