@@ -30,54 +30,31 @@ a, button, input[type="checkbox"], .pixelated-title {
     height: 120px; /* Added fixed height */
 }
 
-.top-left-image {
+.top-left-image, .top-right-image {
     position: absolute;
     top: 0;
-    left: 0;
     max-width: 150px;
     height: auto;
     z-index: 1;
-    /* Fallback if the image can't be loaded */
-    background-color: #333;
+    background-color: transparent; /* Remove background since SVG has its own */
     width: 150px;
     height: 150px;
-    border: 2px solid #ff69b4;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ff69b4;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 12px;
 }
 
-.top-left-image::after {
-    content: "Gojou";
-    position: absolute;
+.top-left-image {
+    left: 0;
 }
 
 .top-right-image {
-    position: absolute;
-    top: 0;
     right: 0;
-    max-width: 150px;
-    height: auto;
-    z-index: 1;
-    /* Fallback if the image can't be loaded */
-    background-color: #333;
-    width: 150px;
-    height: 150px;
-    border: 2px solid #ff69b4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff69b4;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 12px;
 }
 
-.top-right-image::after {
-    content: "JJK";
-    position: absolute;
+/* Remove the ::after pseudo-elements since we now have text in the SVGs */
+.top-left-image::after, .top-right-image::after {
+    content: none;
 }
 
 /* Instagram tag styling */
@@ -135,25 +112,16 @@ a, button, input[type="checkbox"], .pixelated-title {
 .berserk-image {
     max-width: 100%;
     height: auto;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-    /* Fallback if the image can't be loaded */
-    background-color: #333;
     width: 200px;
     height: 200px;
-    border: 2px solid #ff69b4;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ff69b4;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
+    background-color: transparent; /* Remove background since SVG has its own */
 }
 
 .berserk-image::after {
-    content: "Berserk";
-    position: absolute;
+    content: none;
 }
 
 .pixel-font {
