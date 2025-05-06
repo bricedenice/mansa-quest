@@ -335,7 +335,10 @@ input[type="checkbox"]:checked::after {
         position: relative;
         padding-left: 50%;
         text-align: left;
-        min-height: 30px;
+        min-height: 40px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        overflow: hidden;
     }
     
     td:before {
@@ -350,8 +353,42 @@ input[type="checkbox"]:checked::after {
     
     /* Labels for each td based on their position */
     td:nth-of-type(1):before { content: "Watched?"; }
-    td:nth-of-type(2):before { content: "Anime Name:"; }
-    td:nth-of-type(3):before { content: "Description:"; }
+    
+    /* Fix the anime name field to prevent overlap */
+    td:nth-of-type(2) {
+        padding-top: 30px; /* More space for the label */
+        min-height: 60px;
+        padding-left: 10px; /* Reset padding */
+        margin-top: 5px;
+    }
+    
+    td:nth-of-type(2):before { 
+        content: "Anime Name:"; 
+        position: static;
+        display: block;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    /* Adjust description field specifically to be more readable */
+    td:nth-of-type(3) {
+        padding: 15px 10px;
+        margin-top: 5px;
+        border-top: 1px dotted #555;
+        clear: both;
+        float: none;
+        width: 100%;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    
+    /* Reset the before content for description */
+    td:nth-of-type(3):before {
+        display: block;
+        position: static;
+        width: 100%;
+        margin-bottom: 8px;
+    }
     
     /* Adjust checkbox positioning */
     input[type="checkbox"] {
@@ -382,26 +419,6 @@ input[type="checkbox"]:checked::after {
         position: relative;
         transform: none;
         left: auto;
-    }
-    
-    /* Improve description readability */
-    td:nth-of-type(3) {
-        padding: 15px 10px;
-        margin-top: 5px;
-        border-top: 1px dotted #555;
-        clear: both;
-        float: none;
-        width: 100%;
-        text-align: left;
-        box-sizing: border-box;
-    }
-    
-    /* Reset the before content for description */
-    td:nth-of-type(3):before {
-        display: block;
-        position: static;
-        width: 100%;
-        margin-bottom: 8px;
     }
 }
 
@@ -461,8 +478,14 @@ input[type="checkbox"]:checked::after {
     
     /* Adjust table text for mobile */
     td {
-        padding: 12px 8px 12px 50%;
+        padding: 12px 8px;
         font-size: 12px;
+    }
+    
+    /* Further adjust anime name for very small screens */
+    td:nth-of-type(2) {
+        padding-top: 25px;
+        min-height: 50px;
     }
     
     /* Adjust description field specifically to be more readable */
