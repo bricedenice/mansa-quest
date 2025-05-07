@@ -415,7 +415,7 @@ input[type="checkbox"]:checked::after {
     }
     
     /* Adjust checkbox positioning */
-    input[type="checkbox"] {
+    #animeTable input[type="checkbox"] {
         margin: 0;
         position: absolute;
         left: 30%;
