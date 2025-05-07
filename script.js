@@ -239,20 +239,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const rapidFireUl = document.getElementById('rapidFireList');
     const mangaUl = document.getElementById('mangaList');
 
-    // Function to load saved progress
+    // Function to load saved progress for main anime list
     function loadProgress() {
         const savedProgress = JSON.parse(localStorage.getItem('animeProgress')) || {};
-        console.log("Loaded progress:", savedProgress);
+        console.log("Loaded main anime progress:", savedProgress);
         return savedProgress;
     }
 
-    // Function to save progress
+    // Function to save progress for main anime list
     function saveProgress(id, isWatched) {
         const currentProgress = JSON.parse(localStorage.getItem('animeProgress')) || {};
         currentProgress[id] = isWatched;
         localStorage.setItem('animeProgress', JSON.stringify(currentProgress));
-        console.log("Saved progress for:", id, "Watched:", isWatched);
-        console.log("Current full progress state:", currentProgress);
+        console.log("Saved main anime progress for:", id, "Watched:", isWatched);
+    }
+
+    // Functions for Rapid Fire List progress
+    function loadRapidFireProgress() {
+        const savedProgress = JSON.parse(localStorage.getItem('rapidFireAnimeProgress')) || {};
+        console.log("Loaded rapid fire progress:", savedProgress);
+        return savedProgress;
+    }
+
+    function saveRapidFireProgress(id, isChecked) {
+        const currentProgress = JSON.parse(localStorage.getItem('rapidFireAnimeProgress')) || {};
+        currentProgress[id] = isChecked;
+        localStorage.setItem('rapidFireAnimeProgress', JSON.stringify(currentProgress));
+        console.log("Saved rapid fire progress for:", id, "Checked:", isChecked);
+    }
+
+    // Functions for Manga List progress
+    function loadMangaProgress() {
+        const savedProgress = JSON.parse(localStorage.getItem('mangaListProgress')) || {};
+        console.log("Loaded manga progress:", savedProgress);
+        return savedProgress;
+    }
+
+    function saveMangaProgress(id, isChecked) {
+        const currentProgress = JSON.parse(localStorage.getItem('mangaListProgress')) || {};
+        currentProgress[id] = isChecked;
+        localStorage.setItem('mangaListProgress', JSON.stringify(currentProgress));
+        console.log("Saved manga progress for:", id, "Checked:", isChecked);
     }
 
     if (animeTableBody) {
@@ -280,9 +307,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (rapidFireUl) {
-        rapidFireAnime.forEach(animeName => {
+        const rapidProgress = loadRapidFireProgress();
+        rapidFireAnime.forEach((animeName, index) => {
             const li = document.createElement('li');
-            li.textContent = animeName;
+            const checkboxId = `rapid-item-${index}`;
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = checkboxId;
+            checkbox.checked = rapidProgress[checkboxId] || false;
+            checkbox.addEventListener('change', (event) => {
+                saveRapidFireProgress(checkboxId, event.target.checked);
+            });
+
+            const label = document.createElement('label');
+            label.htmlFor = checkboxId;
+            label.textContent = animeName;
+            // Add a little space between checkbox and label
+            label.style.marginLeft = '8px';
+
+            li.appendChild(checkbox);
+            li.appendChild(label);
             rapidFireUl.appendChild(li);
         });
     } else {
@@ -290,9 +335,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (mangaUl) {
-        mangaList.forEach(mangaName => {
+        const mangaProgress = loadMangaProgress();
+        mangaList.forEach((mangaName, index) => {
             const li = document.createElement('li');
-            li.textContent = mangaName;
+            const checkboxId = `manga-item-${index}`;
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = checkboxId;
+            checkbox.checked = mangaProgress[checkboxId] || false;
+            checkbox.addEventListener('change', (event) => {
+                saveMangaProgress(checkboxId, event.target.checked);
+            });
+
+            const label = document.createElement('label');
+            label.htmlFor = checkboxId;
+            label.textContent = mangaName;
+            // Add a little space between checkbox and label
+            label.style.marginLeft = '8px';
+
+            li.appendChild(checkbox);
+            li.appendChild(label);
             mangaUl.appendChild(li);
         });
     } else {
